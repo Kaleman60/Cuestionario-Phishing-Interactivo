@@ -241,24 +241,275 @@ const emails = [
                 "<b>La verificación real:</b> Se gestiona desde la app, nunca por correo electrónico."
             ]
         }
+    },
+    {
+        from: "cuenta@netflix-billing.xyz",
+        to: "tu@email.com",
+        subject: "Actualiza tu método de pago - Netflix",
+        body: `<p>Estimado miembro de Netflix,</p>
+        <p>No pudimos procesar el pago de tu suscripción. Tu servicio será suspendido en 48 horas.</p>
+        <p>Por favor, actualiza tus datos de pago inmediatamente:</p>
+        <p><a href="#" class="suspicious-link">https://netflix-billing.xyz/update-payment</a></p>
+        <p>Tarjeta aceptada: Visa, Mastercard, AMEX</p>
+        <p>Ingresa tu número de tarjeta, fecha de vencimiento y CVV para continuar.</p>
+        <p>Netflix</p>`,
+        isPhishing: true,
+        explanation: {
+            title: "CORREO DE PHISHING",
+            points: [
+                "<b>Dominio falso:</b> 'netflix-billing.xyz' no es netflix.com",
+                "<b>Solicita datos de tarjeta:</b> Pide CVV y datos completos de tarjeta directamente",
+                "<b>Urgencia:</b> '48 horas' para presionar acción inmediata",
+                "<b>Netflix nunca:</b> Pide datos de pago via email",
+                "<b>Dominio sospechoso:</b> .xyz no es usado por Netflix"
+            ]
+        }
+    },
+    {
+        from: "security@google.com",
+        to: "tu@email.com",
+        subject: "Notificación de seguridad: Inicio de sesión desde nuevo dispositivo",
+        body: `<p>Hola,</p>
+        <p>Se detectó un nuevo inicio de sesión en tu cuenta de Google:</p>
+        <ul>
+            <li><strong>Dispositivo:</strong> Windows - Chrome</li>
+            <li><strong>Ubicación:</strong> Madrid, España</li>
+            <li><strong>Fecha:</strong> 27 de febrero de 2026, 07:45</li>
+        </ul>
+        <p>Si no fuiste tú, cambia tu contraseña desde <a href="#">myaccount.google.com</a></p>
+        <p>Este es un mensaje automático. No respondas a este correo.</p>
+        <p>Equipo de Seguridad de Google</p>`,
+        isPhishing: false,
+        explanation: {
+            title: "CORREO LEGÍTIMO",
+            points: [
+                "<b>Dominio correcto:</b> google.com (oficial)",
+                "<b>Información verificable:</b> Proporciona dispositivo y ubicación",
+                "<b>No pide hacer clic:</b> Indica cómo cambiar contraseña desde su web oficial",
+                "<b>No solicita datos:</b> No pide contraseñas ni información personal",
+                "<b>Mensaje automático:</b> Indica que es automático"
+            ]
+        }
+    },
+    {
+        from: "soporte@bancopopular-alert.com",
+        to: "tu@email.com",
+        subject: "Verifica tu identidad - Solicitud de transferencia",
+        body: `<p>Estimado cliente,</p>
+        <p>Se ha solicitado una transferencia de 2.500€ desde tu cuenta.</p>
+        <p>Detalles:</p>
+        <ul>
+            <li><strong>Destinatario:</strong> Juan García</li>
+            <li><strong>IBAN:</strong> ES12 3456 7890 1234 5678 9012</li>
+        </ul>
+        <p>¿No fuiste tú? Confirma tu identidad inmediatamente:</p>
+        <p><a href="#" class="suspicious-link">https://bancopopular-alert.com/verify</a></p>
+        <p>Si no respondes en 1 hora, autorizamos la transferencia.</p>
+        <p>Banco Popular - Seguridad</p>`,
+        isPhishing: true,
+        explanation: {
+            title: "CORREO DE PHISHING",
+            points: [
+                "<b>Banco Popular NO existe:</b> Fue absorbido por Unicaja",
+                "<b>Dominio falso:</b> 'bancopopular-alert.com' no es oficial",
+                "<b>Urgencia extrema:</b> '1 hora' para impedir reflexión",
+                "<b>Bancos nunca:</b> Piden verificación via email",
+                "<b>Enlace externo:</b> Solicita confirmar identidad fuera del banco"
+            ]
+        }
+    },
+    {
+        from: "service@paypa1-security.com",
+        to: "tu@email.com",
+        subject: "Tu código de verificación de PayPal",
+        body: `<p>Estimado usuario,</p>
+        <p>Se ha solicitado un código de verificación para tu cuenta PayPal.</p>
+        <p><strong>Código: 482916</strong></p>
+        <p>Si no fuiste tú, haz clic aquí para asegurar tu cuenta:</p>
+        <p><a href="#" class="suspicious-link">https://paypa1-security.com/verify-code</a></p>
+        <p>Este código expira en 10 minutos.</p>
+        <p>PayPal Security Team</p>`,
+        isPhishing: true,
+        explanation: {
+            title: "CORREO DE PHISHING",
+            points: [
+                "<b>Dominio falso:</b> 'paypa1-security.com' usa número 1 en lugar de 'i'",
+                "<b>Solicita verificar via enlace:</b> PayPal nunca hace esto",
+                "<b>Urgencia:</b> 'expira en 10 minutos'",
+                "<b>PayPal no envía así:</b> Códigos via email con enlaces",
+                "<b>El dominio:</b> No es paypal.com"
+            ]
+        }
+    },
+    {
+        from: "noreply@spotify.com",
+        to: "tu@email.com",
+        subject: "Tu factura de Spotify - Febrero 2026",
+        body: `<p>Hola,</p>
+        <p>Tu recibo de Spotify Premium:</p>
+        <ul>
+            <li><strong>Plan:</strong> Premium Individual</li>
+            <li><strong>Período:</strong> 26 ene - 26 feb 2026</li>
+            <li><strong>Importe:</strong> 10,99 €</li>
+        </ul>
+        <p>Tu próximo cargo: 26 de marzo de 2026</p>
+        <p>Gestiona tu suscripción en <a href="#">spotify.com/account</a></p>
+        <p>Gracias por escuchar,<br>Spotify</p>`,
+        isPhishing: false,
+        explanation: {
+            title: "CORREO LEGÍTIMO",
+            points: [
+                "<b>Dominio correcto:</b> spotify.com (oficial)",
+                "<b>Información de facturación:</b> Específica y coherente",
+                "<b>No pide datos:</b> No incluye enlaces sospechosos",
+                "<b>Diseño coherente:</b> Con comunicaciones de Spotify"
+            ]
+        }
+    },
+    {
+        from: "atencion@agencia-tributaria.gob.es",
+        to: "tu@email.com",
+        subject: "Tu impuestos - Aviso de la Agencia Tributaria",
+        body: `<p>Estimado contribuyente,</p>
+        <p>Hemos detectado irregularidades en tu declaración de la renta.</p>
+        <p>Tienes un saldo pendiente de 1.250€.</p>
+        <p>Para evitar sanciones, regulariza tu situación:</p>
+        <p><a href="#" class="suspicious-link">https://agencia-tributaria.gob.es/pago-inmediato</a></p>
+        <p>Tienes 5 días naturales para responder.</p>
+        <p>Agencia Tributaria</p>`,
+        isPhishing: true,
+        explanation: {
+            title: "CORREO DE PHISHING",
+            points: [
+                "<b>La Agencia Tributaria NO:</b> Comunica pagos via email así",
+                "<b>Dominio correcto:</b> Seria sede.agenciatributaria.gob.es",
+                "<b>Urgencia injustificada:</b> '5 días'",
+                "<b>No piden pagos:</b> Via enlace externo",
+                "<b>La Agencia usa:</b> Certificado digital y sede electrónica"
+            ]
+        }
+    },
+    {
+        from: "no-reply@outlook.com",
+        to: "tu@email.com",
+        subject: "Alerta de seguridad: Tu contraseña expira mañana",
+        body: `<p>Hola,</p>
+        <p>Tu contraseña de Microsoft expirará mañana.</p>
+        <p>Detalles:</p>
+        <ul>
+            <li><strong>Cuenta:</strong> tu@correo.com</li>
+            <li><strong>Caducidad:</strong> 27 de febrero de 2026</li>
+        </ul>
+        <p>Para cambiar tu contraseña, usa la configuración de tu dispositivo o visita <a href="#">account.microsoft.com</a></p>
+        <p>Si no quieres cambiarla, ignora este mensaje.</p>
+        <p>Equipo de Microsoft</p>`,
+        isPhishing: false,
+        explanation: {
+            title: "CORREO LEGÍTIMO",
+            points: [
+                "<b>Dominio correcto:</b> outlook.com (oficial de Microsoft)",
+                "<b>No incluye enlaces:</b> Directos a cambio de contraseña",
+                "<b>Indica cómo:</b> Cambiar contraseña de forma segura",
+                "<b>Mensaje neutral:</b> Dice 'ignora este mensaje'"
+            ]
+        }
+    },
+    {
+        from: "delivery@dhl-express-delivery.info",
+        to: "tu@email.com",
+        subject: "Tu paquete no pudo ser entregado - DHL",
+        body: `<p>Estimado cliente,</p>
+        <p>Tu paquete no pudo ser entregado debido a información de dirección incompleta.</p>
+        <p>Número de envío: DHL-8273645</p>
+        <p>Por favor, confirma tus datos de entrega:</p>
+        <p><a href="#" class="suspicious-link">https://dhl-express-delivery.info/redelivery</a></p>
+        <p>De lo contrario, tu paquete será devuelto al remitente en 3 días.</p>
+        <p>DHL Express</p>`,
+        isPhishing: true,
+        explanation: {
+            title: "CORREO DE PHISHING",
+            points: [
+                "<b>Dominio falso:</b> 'dhl-express-delivery.info' no es dhl.com",
+                "<b>Urgencia:</b> '3 días' para presionar",
+                "<b>DHL nunca:</b> Pide datos via enlaces externos",
+                "<b>Errores en dominio:</b> Nombre demasiado largo y sospechoso"
+            ]
+        }
+    },
+    {
+        from: "notificaciones@correos.es",
+        to: "tu@email.com",
+        subject: "Paquete disponible para entrega - Correos",
+        body: `<p>Hola,</p>
+        <p>Tienes un paquete esperando ser entregado.</p>
+        <ul>
+            <li><strong>Número de seguimiento:</strong> ES1234567890XX</li>
+            <li><strong>Estado:</strong> Disponible en oficina</li>
+            <li><strong>Oficina:</strong> Oficina principal - Madrid</li>
+        </ul>
+        <p>Consulta el estado en <a href="#">correos.es/seguimiento</a></p>
+        <p>Gracias,<br>Correos</p>`,
+        isPhishing: false,
+        explanation: {
+            title: "CORREO LEGÍTIMO",
+            points: [
+                "<b>Dominio correcto:</b> correos.es",
+                "<b>Información verificable:</b> De envío",
+                "<b>No pide datos:</b> Personales adicionales",
+                "<b>Formato coherente:</b> Con Correos"
+            ]
+        }
+    },
+    {
+        from: "support@whatsapp-help.net",
+        to: "tu@email.com",
+        subject: "URGENTE: Tu cuenta de WhatsApp será eliminada",
+        body: `<p>¡ATENCIÓN!</p>
+        <p>Tu cuenta de WhatsApp será eliminada en 24 horas por inactividad.</p>
+        <p>Para evitar perder tu cuenta, verifica tu número:</p>
+        <p><a href="#" class="suspicious-link">https://whatsapp-help.net/verify/34XXXXXXX</a></p>
+        <p>Código de verificación: 567891</p>
+        <p>WhatsApp Support Team</p>`,
+        isPhishing: true,
+        explanation: {
+            title: "CORREO DE PHISHING",
+            points: [
+                "<b>WhatsApp nunca:</b> Envía emails así",
+                "<b>Dominio falso:</b> No es whatsapp.com",
+                "<b>Urgencia falsa:</b> '24 horas'",
+                "<b>No verifica así:</b> Cuentas via email",
+                "<b>Phishing:</b> Solicita código de verificación"
+            ]
+        }
     }
 ];
 
 let currentIndex = 0;
 let score = 0;
 let answers = [];
+let shuffledEmails = [];
+
+function shuffleArray(array) {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+}
 
 function initQuiz() {
+    shuffledEmails = shuffleArray(emails);
     currentIndex = 0;
     score = 0;
     answers = [];
-    document.getElementById('total-num').textContent = emails.length;
-    document.getElementById('final-total').textContent = emails.length;
+    document.getElementById('total-num').textContent = shuffledEmails.length;
+    document.getElementById('final-total').textContent = shuffledEmails.length;
     showEmail();
 }
 
 function showEmail() {
-    const email = emails[currentIndex];
+    const email = shuffledEmails[currentIndex];
     
     document.getElementById('email-from').textContent = email.from;
     document.getElementById('email-to').textContent = email.to;
@@ -266,7 +517,7 @@ function showEmail() {
     document.getElementById('email-body').innerHTML = email.body;
     
     document.getElementById('current-num').textContent = currentIndex + 1;
-    document.getElementById('progress').style.width = ((currentIndex) / emails.length * 100) + '%';
+    document.getElementById('progress').style.width = ((currentIndex) / shuffledEmails.length * 100) + '%';
     
     document.getElementById('quiz-container').classList.remove('hidden');
     document.getElementById('feedback-container').classList.add('hidden');
@@ -276,7 +527,7 @@ function showEmail() {
 }
 
 function answer(userSaidPhishing) {
-    const email = emails[currentIndex];
+    const email = shuffledEmails[currentIndex];
     const isCorrect = userSaidPhishing === email.isPhishing;
     
     if (isCorrect) {
@@ -325,7 +576,7 @@ function updateScore() {
 function nextEmail() {
     currentIndex++;
     
-    if (currentIndex >= emails.length) {
+    if (currentIndex >= shuffledEmails.length) {
         showResults();
     } else {
         showEmail();
@@ -339,7 +590,7 @@ function showResults() {
     
     document.getElementById('final-score').textContent = score;
     
-    const percentage = (score / emails.length) * 100;
+    const percentage = (score / shuffledEmails.length) * 100;
     let message = '';
     
     if (percentage >= 90) {
