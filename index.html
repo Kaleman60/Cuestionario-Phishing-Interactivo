@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionario Phishing Interactivo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎣 Cuestionario de Phishing</h1>
+            <p class="subtitle">Aprende a identificar correos fraudulentos</p>
+        </header>
+
+        <div id="quiz-container">
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+            <p class="question-count">Correo <span id="current-num">1</span> de <span id="total-num">10</span></p>
+
+            <div class="email-container">
+                <div class="email-header">
+                    <div class="email-field">
+                        <span class="label">De:</span>
+                        <span class="value" id="email-from"></span>
+                    </div>
+                    <div class="email-field">
+                        <span class="label">Para:</span>
+                        <span class="value" id="email-to"></span>
+                    </div>
+                    <div class="email-field">
+                        <span class="label">Asunto:</span>
+                        <span class="value" id="email-subject"></span>
+                    </div>
+                </div>
+                <div class="email-body" id="email-body"></div>
+            </div>
+
+            <div class="actions">
+                <button class="btn btn-real" onclick="answer(false)">✓ Legítimo</button>
+                <button class="btn btn-phishing" onclick="answer(true)">⚠ Phishing</button>
+            </div>
+        </div>
+
+        <div id="feedback-container" class="hidden">
+            <div class="feedback" id="feedback"></div>
+            <div class="score">
+                <p>Puntuación: <span id="score">0</span>/<span id="score-total">0</span></p>
+            </div>
+            <button class="btn btn-next" onclick="nextEmail()">Siguiente correo →</button>
+        </div>
+
+        <div id="results-container" class="hidden">
+            <h2>📊 Resultados Finales</h2>
+            <div class="final-score">
+                <span class="score-number" id="final-score">0</span>
+                <span class="score-divider">/</span>
+                <span class="score-total" id="final-total">10</span>
+            </div>
+            <p class="result-message" id="result-message"></p>
+            <div class="review-section">
+                <h3>Revisión de respuestas:</h3>
+                <div id="review-list"></div>
+            </div>
+            <button class="btn btn-next" onclick="restartQuiz()">🔄 Reiniciar cuestionario</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
